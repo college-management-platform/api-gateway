@@ -30,6 +30,6 @@ public class AuthenticationFilter implements GlobalFilter {
             return exchange.getResponse().setComplete();
         }
 
-        return exchange.getResponse().setComplete();
+        return chain.filter(exchange);
     }
 }

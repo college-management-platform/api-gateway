@@ -13,14 +13,14 @@ public class JwtUtil {
 
     private static final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
-    public static void validateToken(String token){
+    public static void validateToken(String token) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
 
-        if(claims.getExpiration().before(new Date()))
+        if (claims.getExpiration().before(new Date()))
             throw new RuntimeException("Token Expired !");
     }
 }
